@@ -1,0 +1,24 @@
+<?xml-stylesheet type="text/xsl" href="D:\Jag\MPhasis\HANDSON\185 Java JR\Feb19\book.xsl"?>
+<BOOKS>
+	<BOOK BID="B001">
+		<TITLE>You can win</TITLE>
+		<AUTHOR>
+			<FIRSTNAME>Shiv</FIRSTNAME>
+			<LASTNAME>Khera</LASTNAME>
+		</AUTHOR>
+	</BOOK>
+	<BOOK BID="B002">
+		<TITLE>Let us C</TITLE>
+		<AUTHORS>
+			<NAME>Balagurusamy</NAME>
+			<NAME>Jagadeeswaran</NAME>
+		</AUTHORS>
+	</BOOK>
+    	<BOOK BID="B003">
+		<TITLE>Let us C</TITLE>
+		<AUTHORS>
+			<NAME>Balagurusamy</NAME>
+			<NAME>Jagadeeswaran</NAME>
+		</AUTHORS>
+	</BOOK>
+</BOOKS>

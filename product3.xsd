@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="PRODUCTS" type="prds" />
+<xsd:complexType name="prds">
+	<xsd:sequence>
+		<xsd:element name="PRODUCT" type="prd" minOccurs="1" maxOccurs="unbounded" />
+	</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="prd">
+	<xsd:sequence>
+		<xsd:element name="NAME" type="xsd:string" />
+		<xsd:element name="DESCRIPTION" type="xsd:string" />
+		<xsd:element name="PRICE" type="xsd:positiveInteger" />
+	</xsd:sequence>
+	<xsd:attribute name="PID" type="xsd:string" />
+	<xsd:attribute name="CATEGORY" type="xsd:string" />
+</xsd:complexType>
+</xsd:schema>

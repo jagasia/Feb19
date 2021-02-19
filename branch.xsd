@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="Branches">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Branch"  maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="Name" type="xsd:string" />
+                            <xsd:element name="City" type="xsd:string" />
+                        </xsd:sequence>
+                        <xsd:attribute name="bid" type="xsd:string" />
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+   </xsd:element>
+</xsd:schema>

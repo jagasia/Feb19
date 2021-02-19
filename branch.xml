@@ -1,0 +1,26 @@
+<Branches>
+    <Branch bid="B00001">
+        <Name>Asaf Ali Road</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00002">
+        <Name>New Delhi Main Branch</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00003">
+        <Name>Delhi Cantt</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00004">
+        <Name>Jasola</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00005">
+        <Name>Ann Marry</Name>
+        <City>Mumbai</City>
+    </Branch>
+    <Branch bid="B00006">
+        <Name>Vile Parle</Name>
+        <City>Mumbai</City>
+    </Branch>
+</Branches>

@@ -1,0 +1,749 @@
+Forms validation
+	<form>
+		<input type=submit />
+	</form>
+
+when there are validation errors, the form should be prevented from submitting.
+Only when the form is valid, the form should be submitted.
+Every form control (input element) can be valid or invalid. If any control is invalid, then
+	the entire form is invalid.
+
+TasK	(push, pop, splice)
+
+
+
+whenever you name a function
+	follow camelCase
+		acceptDetails()
+		displayDetails()
+		calculateSimpleInterest()
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var countries=[];           //  we can create an array like this
+        // var arr=new Array();        //  we can create an array like this
+        function display()
+        {
+            //countries is an array. I can loop this array
+            document.getElementById('divResult').innerHTML='';
+            for(var c of countries)
+            {
+                document.getElementById('divResult').innerHTML+='<li>'+c+'</li>';
+            }
+            // alert('adding')
+        }
+        function fnAdd()
+        {
+            var country=document.getElementById('txtCountry').value;
+            // alert(country=='')
+            if(country=='')
+                return;
+            countries.push(country);
+            display();
+        }
+        function fnRemove()
+        {
+            var country=document.getElementById('txtCountry').value;
+            if(country=='')
+                return;
+                // countries.pop(country);         //splice method to add/ remove at a particular index
+                // find the index of element to be removed. if we get -1 as index, the entered item is not found. so nothing to remove
+                //how to find the index of entered item in an array?
+                var index=countries.indexOf(country);
+                if(index==-1)
+                    return;
+                countries.splice(index,1);
+           display();
+        }
+    </script>
+</head>
+<body>
+    Country Name: <input type="text" name="" id="txtCountry"><br>
+    <input type="button" value="Add" onclick="fnAdd()">
+    <input type="button" value="Remove" onclick="fnRemove()">
+    <br><div id="divResult"></div>
+</body>
+</html>
+
+============================================================
+XML
+	What does XML stands for?
+		eXtensible Markup Language
+
+	during 1999, Microsoft presented a paper called XML,
+	 in World Wide Web Consortium (w3c is responsible for approving web standards) 
+	
+	It was approved (recommended by w3c as a standard for interchanging information across heterogenous data sources)
+
+	what is XML?
+		TO understand xml, lets understand CSV.
+
+	csv stands for comma separated values.
+
+	ex:
+		
+1, Rama, 90
+2, Siva, 89
+3, Ramkumar, 100
+4, Abdul, 90
+
+
+
+	CSV is a structured data. That was and even today, is used as a format for data interchange from data sources.
+
+	What is meant by heterogenous data sources?
+
+	Suppose, Debanjan has Oracle database in his PC
+	Juvesh has MySql database in his PC
+	I have DB2 (IBM)	database in my PC
+
+	Both Deb and Juv has to send their data to me. I will collate them into my database.
+
+	How is it possible?	Since, data sources are heterogenous, we need a common format to send them
+	Each of you can export your data into a CSV format. I can import CSV into my database.
+
+	CSV is now used as a format for data exchange. and its role was between export there and import here.
+
+
+How XML will help us?
+
+1, Rama, 90
+2, Siva, 89
+3, Ramkumar, 100
+4, Abdul, 90
+
+
+Instead of above method (csv), We can use XML way of representing the data.
+
+<STUDENTS>
+<STUDENT SID="S001">
+	<SNO>1</SNO>
+	<NAME>Rama</NAME>
+	<MARK>90</MARK>
+</STUDENT>
+<STUDENT>
+	<SNO>1</SNO>
+	<NAME>Rama</NAME>
+	<MARK>90</MARK>
+</STUDENT>
+<STUDENT>
+	<SNO>1</SNO>
+	<NAME>Rama</NAME>
+	<MARK>190</MARK>			it can be validated and errors can be shown as the data is wrong
+</STUDENT>
+<STUDENT>
+	<SNO>1</SNO>
+	<NAME>Rama</NAME>
+	<MARK>90</MARK>
+</STUDENT>
+</STUDENTS>
+
+iN csv, There was no data description. 
+Both are structured data. But CSV do not impose data types, data restrictions, data format, data range, etc etc.
+
+But XML introduce, data types, data restrictions, data format, data range, etc etc.
+
+That means, the data inside a tag in XML, can be validated. 
+
+There are validation programs that can validate your xml data against some schema. 
+
+I can introduce, schema
+		structure of the xml data.	(root element, what are the child elements, what are the type of data allowed in the element or attribute)
+
+XML is a text based markup language for data description and representation. (NOT FOR PRESENTATION. HTML is for that)
+
+HTML says how to present data.
+XML describes the data.
+
+<EID>ABC123</EID>			I can restrict the employee id should be following a pattern
+
+
+Interoperability	
+	The requirement was the ability of applications that are developed using different languages, in different platforms to interact with other applications.
+	Visual basic program could not interact with a Java program
+	Why?
+		a function from one program to call another program's function was not possible because of the difference in the data types.
+
+if we exchange data in text format, any platform can understand.
+but because of text, we lose business rules and restrictions.
+
+int age;		there is a restriction
+String age;			there is no restriction
+
+So we need a technique that allows representing data in text format without losing business rules.
+
+If you send CSV data to me, i can import it to my database. But before import, I cannot validate that csv data.
+
+----------------------
+Well formed XML document
+-------------------
+	What is meant by well formedness?
+
+i) The document should contain a root element
+ii) There should be only 1 root element
+iii) All elements must be present inside the root element. (except the processing instruction (which is optional))
+		<?xml version="1.0" encoding="UTF-8" ?>				this is same from 1999 onwards
+	what is encoding?
+		representing a character as a numeric equivalent
+			A	= 65
+			a	= 97
+			
+	Unicode has 16 bit representation of any character
+			A	65		0000 0000 0100 0001	(this is 16 bit representation of A)
+			in UTF -8 		          0100 0001	(THIS is UTF-8)
+
+iv) elements must be nested properly. Should not overlap. 
+v) Attribute values must be in single or double quotes.
+vi) Tags are case sensitive. It can be in upper case or lower case or mixed. But Starting tag and ending tag must match in case.
+vii) Empty tags must end with /
+	ex:		<hr/>		<br/>
+viii) Entities must be used whenever reserved characters are required
+	a>b	is not allowed
+	a&gt;b	is allowed
+			Entities start with & and end with ;		ex:		&nbsp;		is space
+
+
+To check if a XML document is well formed or not, we can use browser.
+
+
+TasK:
+	Create an xml document as follows:
+i) root element should be PRODUCTS
+ii) There should be one or more PRODUCT
+iii) Each PRODUCT should contain attributes ID and CATEGORY
+iv) ID must be following a pattern
+	P001
+v) Category can be either 
+	Electronics
+	Consumer Durable
+	Accessories
+vi) PRODUCT can contain child elements
+	NAME
+	DESCRIPTION
+	PRICE
+	
+ ----------------------
+<PRODUCTS>
+	<PRODUCT ID="P001" CATEGORY="Electronics">
+		<NAME>Computer</NAME>
+		<DESCRIPTION>Computer brand Legion Processor is I7</DESCRIPTION>
+		<PRICE>130000</PRICE>
+	</PRODUCT>
+	<PRODUCT ID="P002" CATEGORY="Consumer Durable">
+		<NAME>Washing Machine</NAME>
+		<DESCRIPTION>LG front load washining machine</DESCRIPTION>
+		<PRICE>40000</PRICE>
+	</PRODUCT>
+	<PRODUCT ID="P003" CATEGORY="Accessories">
+		<NAME>Ear phone</NAME>
+		<DESCRIPTION>Samsung ear phone</DESCRIPTION>
+		<PRICE>300</PRICE>
+	</PRODUCT>
+</PRODUCTS>
+--------------------
+
+Save this program as 
+	products.xml
+and
+open it in browser. It will check if the document is well formed or not.
+
+Well formed ness checking do not check if the specified elements and attributes are present or not. It will check only the well formedness rules like syntax
+
+----------------------
+We will discuss what are elements and attributes. 
+When to use elements? and when to use attributes? 
+
+
+
+
+<PRODUCTS>
+	<PRODUCT ID="P001" CATEGORY="Electronics">
+		<NAME>Computer</NAME>
+		<DESCRIPTION>Computer brand Legion Processor is I7</DESCRIPTION>
+		<PRICE>130000</PRICE>
+	</PRODUCT>
+</PRODUCTS>
+
+Why ID is an attribute?
+Why Category is an attribute?
+Why NAME is an element?
+
+How to decide? what is the choice?
+
+
+<p align="left" ></p>		p is element. align is attribute.
+
+
+<PRODUCTS>
+	<PRODUCT>
+		<ID>P001</ID>
+		<CATEGORY>Electronics</CATEGORY>
+		<NAME>Computer</NAME>
+		<DESCRIPTION>Computer brand Legion Processor is I7</DESCRIPTION>
+		<PRICE>130000</PRICE>
+	</PRODUCT>
+</PRODUCTS>
+
+This is also well formed. But why ID is attribute in the given task?
+
+There are guidelines defined:
+1) If we want to display the data, update the data so often, the data can be Element
+2) If we want to filter/ or group/ sort based on some data, 
+	use the data as an attribute
+3) If a data is an identifier (primary key) 
+	use the data as an attribute
+4) Attribute should not be often modified (primary key is never updated)
+
+It is possible to write a program that will sort the products based on category
+	that will find a product by ID
+	etc etc
+
+------------------------------------------
+
+We will learn to introduce schema restrictions using DTD 
+
+What is DTD?
+	Document Type Definition
+	is used to define the schema of the xml document. (Schema?	means, 	structure)
+
+I will be able to validate your XML file against the DTD
+
+There is a syntax for DTD language:
+
+<!ELEMENT PRODUCTS (PRODUCT)+>						+ means 1 or more.	* means 0 or more. ? means 0 or 1 that means optional
+
+<!ATTLIST PRODUCT ID #PCDATA #REQUIRED >	
+
+Value type in DTD can be CDATA	or 	PCDATA	
+
+		
+DTD do not provide options to validate the simple data. in a value, it cannot say format, data type, range, etc (WHich are possible in XSD. We learn XSD later today)
+
+There are 2 ways of DTD:
+	i) Internal DTD
+	ii) External DTD
+
+Internal DTD
+	are present inside the XML file itself
+
+External DTD
+	files are save with .dtd extension and refered from an XML file	 using <!DOCTYPE SYSTEM FILENAME >
+
+But how to validate an XML file against a DTD
+	Online validators are available
+
+Using DTD validators, we check if the XML data conforms to the schema specified by the DTD
+
+
+-----------------------------------------------
+Create XML file with internal DTD
+i) root element should be Employees
+ii) There can be one or more Employee inside the Employees
+iii) Each Employee is uniquely identified by EID
+iv) Employee belong to a Department which is used to sort or filter in future
+v) Employee details are
+	FirstName 
+	LastName
+
+Validate the xml file against internal DTD using 
+https://www.w3schools.com/xml/xml_dtd_attributes.asp
+
+
+--------------------------------------------------------
+Create a XML File as follows:
+
+<BOOKS>
+	<BOOK>
+		<TITLE>You can win</TITLE>
+		<AUTHOR>
+			<FIRSTNAME>Shiv</FIRSTNAME>
+			<LASTNAME>Khera</LASTNAME>
+		</AUTHOR>
+	</BOOK>
+	<BOOK>
+		<TITLE>Let us C</TITLE>
+		<AUTHORS>
+			<NAME>Balagurusamy</NAME>
+			<NAME>Jagadeeswaran</NAME>
+		</AUTHORS>
+	</BOOK>
+</BOOKS>
+
+A BOOK can contain 
+	AUTHOR
+	(or)
+	AUTHORS
+
+AUTHOR contain
+	FIRSTNAME and LASTNAME
+AUTHORS contain
+	one or more NAME
+
+------------------
+solution
+-------------------
+<!DOCTYPE BOOKS [
+<!ELEMENT BOOKS (BOOK)+>
+<!ELEMENT BOOK (TITLE,(AUTHOR|AUTHORS))>
+<!ELEMENT TITLE (#PCDATA)>
+<!ELEMENT AUTHOR (FIRSTNAME,LASTNAME)>
+<!ELEMENT FIRSTNAME (#PCDATA)>
+<!ELEMENT LASTNAME (#PCDATA)>
+<!ELEMENT AUTHORS (NAME)+>
+<!ELEMENT NAME (#PCDATA)>
+]>
+<BOOKS>
+	<BOOK>
+		<TITLE>You can win</TITLE>
+		<AUTHOR>
+			<FIRSTNAME>Shiv</FIRSTNAME>
+			<LASTNAME>Khera</LASTNAME>
+		</AUTHOR>
+	</BOOK>
+	<BOOK>
+		<TITLE>Let us C</TITLE>
+		<AUTHORS>
+			<NAME>Balagurusamy</NAME>
+			<NAME>Jagadeeswaran</NAME>
+		</AUTHORS>
+	</BOOK>
+</BOOKS>
+
+-------------------------------------------------------
+DTD does not allow us to have more control over the type of data, format of data, etc
+DTD does not have much data types except CDATA and PCDATA. It does not allow us to create our own data types also.
+Different order of elements, NO
+
+So Microsoft introduced XSD language which is similar to the XML syntax. 
+DTD has its own syntax (different from XML)
+
+XSD:
+	XML Schema Definition
+
+
+
+localStorage
+Geolocation
+
+How can i store an array in localStorage?
+	convert the array into comma separated value
+
+
+
+Introducing XSD
+---------------
+	XML Schema Definition
+
+In case of DTD, we had internal DTD or external DTD.
+But in XSD, it is always external XSD only.
+We need 
+	XML File
+	XSD File
+
+to validate
+
+since XSD uses the same syntax as XML or any Markup language, to differentiate between
+pre-defined tags and our own tags, we need "prefix"
+
+<xsd:element				this prefix "xsd" implies that i am using a tag in xsd language
+
+type="xsd:string"			here, string data type belongs to xsd language
+
+type="jag"				here, jag is my own data type
+
+There are some data types already present in XSD language itself. Built -in data type
+SOme data types, are created by us. 
+
+first we need to define the prefix.
+xmlns attribute is used to define the prefix for an existing namespace
+
+What is namespace then?	is like a package (in java), header file (in c, c++)
+
+Data types can be created and grouped inside namespace and refer in many files by importing them using xmlns attribute
+
+
+To create user defined data type in XSD,
+	i) complexType	
+	ii) simpleType
+
+what is complexType
+	a type that contains child elements are complex Type
+
+what is simpleType
+	a scalar value	(means, single value like "rama"		20	etc etc)
+
+
+	string
+	date
+	positiveInteger
+	nonNegativeInteger
+	integer
+
+
+
+for complex Type, the content model can be
+	sequence
+	choice
+	all
+
+Sequence:
+---------
+	All the child elements must present in the specified sequence (order) only
+Choice:
+--------
+	the child elements prsent in the choice ONLY 1 among the list is allowed
+	a or b or c or d		like that
+	among all the options given in choice, only 1 is allowed to be present in xml
+ALL:
+	similar to sequence but in any order
+	All the child elements must be present but in any order
+
+
+-------------------------------------------------------------------------------
+TasK
+	Branches
+		Branch
+			(bid="B00001")	ATTRIBUTE
+			NAME
+			CITY
+
+B00001	Asaf ali road	Delhi
+B00002	New delhi main branch	Delhi
+B00003	Delhi cantt	Delhi
+B00004	Jasola	Delhi
+B00005	Ann Mary	Mumbai
+B00006	Vile parle	Mumbai
+
+<Branches>
+    <Branch bid="B00001">
+        <Name>Asaf Ali Road</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00002">
+        <Name>New Delhi Main Branch</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00003">
+        <Name>Delhi Cantt</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00004">
+        <Name>Jasola</Name>
+        <City>New Delhi</City>
+    </Branch>
+    <Branch bid="B00005">
+        <Name>Ann Marry</Name>
+        <City>Mumbai</City>
+    </Branch>
+    <Branch bid="B00006">
+        <Name>Vile Parle</Name>
+        <City>Mumbai</City>
+    </Branch>
+</Branches>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="Branches" type="branches" />
+    <xsd:complexType name="branches">
+        <xsd:sequence>
+            <xsd:element name="Branch" type="branch" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="branch">
+        <xsd:sequence>
+                <xsd:element name="Name" type="xsd:string" />
+                <xsd:element name="City" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="bid" type="xsd:string" />
+    </xsd:complexType>
+</xsd:schema>
+----------------------------------------------------------------
+TasK:
+	Create a XSD file for below XML file: Book can contain AUTHOR or AUTHORS
+	AUTHOR can contain FIRSTNAME and LASTNAME
+	AUTHORS can contains NAMEs
+<BOOKS>
+	<BOOK>
+		<TITLE>You can win</TITLE>
+		<AUTHOR>
+			<FIRSTNAME>Shiv</FIRSTNAME>
+			<LASTNAME>Khera</LASTNAME>
+		</AUTHOR>
+	</BOOK>
+	<BOOK>
+		<TITLE>Let us C</TITLE>
+		<AUTHORS>
+			<NAME>Balagurusamy</NAME>
+			<NAME>Jagadeeswaran</NAME>
+		</AUTHORS>
+	</BOOK>
+</BOOKS>
+------------------
+solution:
+-----------
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="BOOKS" type="bks" />
+    <xsd:complexType name="bks">
+        <xsd:sequence>
+            <xsd:element name="BOOK" maxOccurs="unbounded" type="bk" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="bk">
+        <xsd:sequence>
+            <xsd:element name="TITLE" type="xsd:string" />
+            <xsd:choice>
+                <xsd:element name="AUTHOR" type="author" />
+                <xsd:element name="AUTHORS" type="authors" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="author">
+        <xsd:sequence>
+            <xsd:element name="FIRSTNAME" type="xsd:string" />
+            <xsd:element name="LASTNAME" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="authors">
+        <xsd:sequence>
+            <xsd:element name="NAME" maxOccurs="unbounded" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+----------------------------------------------------
+Let every book has an attribute "BID" whose value must start with "B" and followed by 3 digit number like B001
+use simpleType of xsd with regular expression
+
+
+[ABC]		THIS ALLOWS either A or B or C
+
+Enumeration is a fixed set of values
+
+
+()	to group a pattern
+[]	list of possible values. Only 1 among them is used (but multiplicity can be used)
+.	anything	char, number, symbol
+
+multiplicity:
+
++
+*
+?
+
+{x,y}
+{x,}
+{x}			{3}	means 3 digit
+
+
+-------------
+
+Task:
+	
+Root element should be USERS
+that contains one or more USER
+Each User can have following elements:
+	FIRSTNAME		(Only Alphabets are allowed. First character should be Upper case only)
+	LASTNAME		(--do--) same as first name
+	EMAIL			(xyz@abc.com)			after . there should 3 characters
+	AGE			must be between 21 to 30
+	
+Following attributes also:
+	UID			3 upper case chars and 3 digits
+	ROLE			optional. But if found, only (ADMIN or USER) allowed
+
+Note:
+	USER may have 
+		Either FIRSTNAME and LASTNAME
+		or just NAME
+
+
+
+<USERS>
+	<USER UID="ABC001" ROLE="ADMIN">
+		<FIRSTNAME>Rajesh</FIRSTNAME>
+		<LASTNAME>Kumar</LASTNAME>
+		<EMAIL>rajesh@yahoo.com</EMAIL>
+		<AGE>22</AGE>
+	</USER>
+</USERS>
+
+
+
+NAME
+or
+	FIRSTNAME
+	LASTNAME
+
+
+--------------
+solution:
+------------
+<USERS>
+	<USER UID="ABC001" ROLE="USER">
+		<FIRSTNAME>Rajesh</FIRSTNAME>
+		<LASTNAME>Kumar</LASTNAME>
+		<EMAIL>rajesh@yahoo.com</EMAIL>
+		<AGE>22</AGE>
+	</USER>
+    	<USER UID="ABC002" ROLE="USER">
+		<FIRSTNAME>Rajesh</FIRSTNAME>
+		<LASTNAME>Kumar</LASTNAME>
+		<EMAIL>rajesh@yahoo.com</EMAIL>
+		<AGE>22</AGE>
+	</USER>
+</USERS>
+
+----------------
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="USERS" type="users" />
+    <xsd:complexType name="users">
+        <xsd:sequence>
+            <xsd:element name="USER" maxOccurs="unbounded" type="u" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:group name="fn">
+        <xsd:sequence>
+            <xsd:element name="FIRSTNAME" type="xsd:string" />
+            <xsd:element name="LASTNAME" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:complexType name="u">
+        <xsd:sequence>            
+            <xsd:choice>             
+                <xsd:group ref="fn" />
+                <xsd:element name="NAME" type="xsd:string" />
+            </xsd:choice>
+            <xsd:element name="EMAIL" type="xsd:string" />
+            <xsd:element name="AGE" type="ag" />
+        </xsd:sequence>
+        <xsd:attribute name="UID" type="ui" />
+        <xsd:attribute name="ROLE" type="rol" use="optional" />
+    </xsd:complexType>
+    <xsd:simpleType name="ag">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="21" />
+            <xsd:maxInclusive value="30" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ui">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="[A-Z]{3}[0-9]{3}" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="rol">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADMIN" />
+            <xsd:enumeration value="USER" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
+-------------------------------
+
+
+Activity:
+---------
+Identify the concept of Namespace in XML and XSD

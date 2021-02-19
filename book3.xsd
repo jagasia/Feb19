@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="BOOKS" type="bks" />
+<xsd:complexType name="bks">
+    <xsd:sequence>
+        <xsd:element name="BOOK" type="bk" minOccurs="1" maxOccurs="unbounded" />
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:element name="BOOK" type="bk" />
+<xsd:complexType name="bk">
+    <xsd:sequence>
+        <xsd:element name="TITLE" type="ti" minOccurs="1" maxOccurs="unbounded" />
+        <xsd:element name="AUTHOR|AUTHORS" type="au|aus" minOccurs="1" maxOccurs="unbounded" />
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:element name="AUTHOR|AUTHORS" type="au|aus" />
+<xsd:complexType name="au|aus">
+<xsd:sequence>
+        <xsd:element name="FIRSTNAME" type="xsd:string" />
+        <xsd:element name="LASTNAME" type="xsd:string" />
+</xsd:sequence>
+<xsd:sequence>
+        <xsd:element name="NAME" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+<xsd:sequence>
+</xsd:complexType>
+</xsd:schema>    

@@ -1,0 +1,34 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="BOOKS" type="bks" />
+    <xsd:complexType name="bks">
+        <xsd:sequence>
+            <xsd:element name="BOOK" maxOccurs="unbounded" type="bk" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="bk">
+        <xsd:sequence>
+            <xsd:element name="TITLE" type="xsd:string" />
+            <xsd:choice>
+                <xsd:element name="AUTHOR" type="author" />
+                <xsd:element name="AUTHORS" type="authors" />
+            </xsd:choice>
+        </xsd:sequence>
+         <xsd:attribute name="BID" type="bid" />
+    </xsd:complexType>
+    <xsd:simpleType name="bid">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="B[0-9]{3}" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="author">
+        <xsd:sequence>
+            <xsd:element name="FIRSTNAME" type="xsd:string" />
+            <xsd:element name="LASTNAME" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="authors">
+        <xsd:sequence>
+            <xsd:element name="NAME" maxOccurs="unbounded" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

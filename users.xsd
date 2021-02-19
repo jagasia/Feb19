@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="USERS" type="users" />
+    <xsd:complexType name="users">
+        <xsd:sequence>
+            <xsd:element name="USER" maxOccurs="unbounded" type="u" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:group name="fn">
+        <xsd:sequence>
+            <xsd:element name="FIRSTNAME" type="xsd:string" />
+            <xsd:element name="LASTNAME" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:group>
+    <xsd:complexType name="u">
+        <xsd:sequence>            
+            <xsd:choice>             
+                <xsd:group ref="fn" />
+                <xsd:element name="NAME" type="xsd:string" />
+            </xsd:choice>
+            <xsd:element name="EMAIL" type="xsd:string" />
+            <xsd:element name="AGE" type="ag" />
+        </xsd:sequence>
+        <xsd:attribute name="UID" type="ui" />
+        <xsd:attribute name="ROLE" type="rol" use="optional" />
+    </xsd:complexType>
+    <xsd:simpleType name="ag">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="21" />
+            <xsd:maxInclusive value="30" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ui">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="[A-Z]{3}[0-9]{3}" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="rol">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADMIN" />
+            <xsd:enumeration value="USER" />
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

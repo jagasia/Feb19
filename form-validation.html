@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function comparePasswords()
+        {
+            var pwd=document.getElementById('txtPassword').value;
+            var cpwd=document.getElementById('txtCPassword').value;
+            if(pwd!=cpwd)
+            {
+                //passwords does not match              //          in css background-color is translated to backgroundColor
+                document.getElementById('txtCPassword').style.borderColor='red';    //border-color (css)    is  borderColor (javascript)
+                document.getElementById('divCPassword').innerHTML='<font color=red>Passwords does not match</font>';
+                return false;
+            }
+            return true;
+        }
+        function doSubmit()
+        {
+            var isValid=true;               //isValid is a boolean variable
+            isValid=comparePasswords();
+            if(!isValid)
+                return isValid;
+            //other validations continue here
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return doSubmit()">
+        <table>
+            <tr>
+                <td>User Name:</td>
+                <td><input type="text" name="" id="txtUserName" required></td>
+                <td><div id="divUserName"></div></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="text" name="" id="txtPassword" required></td>
+                <td><div id="divPassword"></div></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="text" name="" id="txtCPassword" onblur="comparePasswords()"></td>
+                <td><div id="divCPassword"></div></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="" id="txtEmail" required></td>
+                <td><div id="divEmail"></div></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+                <td><input type="reset" value="Reset"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

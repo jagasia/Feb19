@@ -1,0 +1,11 @@
+<?xml-stylesheet type="text/css" href="movie.css"?>
+<movie>
+<title>Monty Python and the Holy Grail</title>
+<rating>PG-13</rating>
+<reviews>
+<rotten>100%</rotten>
+<metacritic>100%</metacritic>
+</reviews>
+<director compensation="$100,000,000">Some really funny guy</director>
+<boxoffice>$1,000,000,000,000</boxoffice>
+</movie>

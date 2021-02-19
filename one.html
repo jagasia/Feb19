@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var countries=[];           //  we can create an array like this
+        // var arr=new Array();        //  we can create an array like this
+        //load the localStorage into the array
+        var csv=load();
+        if(csv!=null)
+            countries=csv.split(',');
+        
+        function display()
+        {
+            //countries is an array. I can loop this array
+            document.getElementById('divResult').innerHTML='';
+            // for(var c of countries)
+            // {
+            //     document.getElementById('divResult').innerHTML+='<li>'+c+'</li>';
+            // }
+            countries.forEach((c)=>{
+                document.getElementById('divResult').innerHTML+='<li>'+c+'</li>';
+            });
+        }
+        function fnAdd()
+        {
+            var country=document.getElementById('txtCountry').value;
+            // alert(country=='')
+            if(country=='')
+                return;
+            countries.push(country);
+            store();
+            display();
+        }
+        function fnRemove()
+        {
+            var country=document.getElementById('txtCountry').value;
+            if(country=='')
+                return;
+                // countries.pop(country);         //splice method to add/ remove at a particular index
+                // find the index of element to be removed. if we get -1 as index, the entered item is not found. so nothing to remove
+                //how to find the index of entered item in an array?
+                var index=countries.indexOf(country);
+                if(index==-1)
+                    return;
+                countries.splice(index,1);
+                store();
+           display();
+        }
+        function load()
+        {
+            //i read the data from localStorage and store it in array
+            var csv=localStorage.getItem('countries');            //localStorage is a simple text.
+            return csv;
+        }
+        function store()
+        {
+            //i will store the data in the localStorage (from array)
+            //alert(countries.toString());
+            var csv=countries.toString();
+            localStorage.setItem('countries',csv);
+        }
+    </script>
+</head>
+<body onload="display()">*&^
+    Country Name: <input type="text" name="" id="txtCountry"><br>
+    <input type="button" value="Add" onclick="fnAdd()">
+    <input type="button" value="Remove" onclick="fnRemove()">
+    <input type="button" value="ok" onclick="store()">
+    <br><div id="divResult"></div>
+</body>
+</html>

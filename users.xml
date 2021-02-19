@@ -1,0 +1,14 @@
+<USERS>
+	<USER UID="ABC001" ROLE="USER">
+		<FIRSTNAME>Rajesh</FIRSTNAME>
+		<LASTNAME>Kumar</LASTNAME>
+		<EMAIL>rajesh@yahoo.com</EMAIL>
+		<AGE>22</AGE>
+	</USER>
+    	<USER UID="ABC002" ROLE="USER">
+		<FIRSTNAME>Rajesh</FIRSTNAME>
+		<LASTNAME>Kumar</LASTNAME>
+		<EMAIL>rajesh@yahoo.com</EMAIL>
+		<AGE>22</AGE>
+	</USER>
+</USERS>

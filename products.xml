@@ -1,0 +1,18 @@
+<PRODUCTS>
+	<PRODUCT ID="P001" CATEGORY="Electronics">
+		<NAME>Computer</NAME>
+		<DESCRIPTION>Computer brand Legion Processor is I7</DESCRIPTION>
+		<PRICE>130000</PRICE>
+	</PRODUCT>
+	<PRODUCT ID="P002" CATEGORY="Consumer Durable">
+		<NAME>Washing Machine</NAME>
+		<DESCRIPTION>LG front load washining machine</DESCRIPTION>
+		<PRICE>40000</PRICE>
+	</PRODUCT>
+	<PRODUCT ID="P003" CATEGORY="Accessories">
+		<NAME>Ear phone</NAME>
+		<DESCRIPTION>Samsung ear phone</DESCRIPTION>
+		<PRICE>300</PRICE>
+	</PRODUCT>
+</PRODUCTS>
+

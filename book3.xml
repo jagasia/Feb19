@@ -1,0 +1,16 @@
+<BOOKS>
+    <BOOK>
+        <TITLE>You can win</TITLE>
+        <AUTHOR>
+            <FIRSTNAME>Shiv</FIRSTNAME>
+            <LASTNAME>Khera</LASTNAME>
+        </AUTHOR>
+    </BOOK>
+    <BOOK>
+        <TITLE>Let us C</TITLE>
+        <AUTHORS>
+            <NAME>Balagurusamy</NAME>
+            <NAME>Jagadeeswaran</NAME>
+        </AUTHORS>
+    </BOOK>
+</BOOKS>
